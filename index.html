@@ -8,6 +8,34 @@
     <script src="./index.js" defer></script>
 </head>
 <body>
-    
+    <header>
+        <h1>Small Library App</h1>
+        <button id="addBook">Add Book</button>
+    </header>
+    <main>
+        <div class="container">
+            <form action="">
+                <fieldset>
+                    <legend>Book properties</legend>
+                    <label for="author">
+                        Author
+                        <input type="text" id="author">
+                    </label>
+                    <label for="title">
+                        Title
+                        <input type="text" id="title">
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Choose one option</legend>
+                    <select name="status" id="status">
+                        <option value="read">Book has been read</option>
+                        <option value="unread">Book has not been read</option>
+                    </select>
+                </fieldset>
+            </form>
+        </div>
+    </main>
+    <footer></footer>
 </body>
 </html>
