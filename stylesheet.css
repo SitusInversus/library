@@ -1,1 +1,35 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    border: solid 1px red;
+    padding: 0;
+    margin: 0;
+}
 
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.container {
+    min-width: 50vw;
+    min-height: 80vh;
+    display:grid;
+    grid-template-columns: repeat(auto-fill,minmax(18.5rem, 1fr));
+    gap: 2rem;
+    place-items: center;
+}
+
+.card {
+    font-size: 1.2rem;
+    width: 17.5rem;
+    min-height: 12.5rem;
+
+    display:grid;
+    grid-template-columns: 4rem 13.5rem;
+}
+
+header {
+    min-width: 50vw;
+}
