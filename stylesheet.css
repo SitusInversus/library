@@ -19,7 +19,7 @@ body {
     grid-template-columns: repeat(auto-fill,minmax(18.5rem, 1fr));
     gap: 2rem;
     place-items: center;
-}
+}6
 
 .card {
     font-size: 1.2rem;
@@ -33,3 +33,31 @@ body {
 header {
     min-width: 50vw;
 }
+
+dialog {
+    margin: auto;
+}
+fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+}
+
+[for="status"] {
+    justify-content: center;
+}
+
+dialog::backdrop {
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(255, 2, 2, 0.2),
+      rgba(0, 0, 0, 0.2) 1px,
+      rgba(0, 0, 0, 0.3) 1px,
+      rgba(0, 0, 0, 0.3) 20px
+    );
+    backdrop-filter: blur(3px);
+  }
