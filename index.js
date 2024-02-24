@@ -4,6 +4,8 @@ const confirmBtn = document.querySelector("#confirm")
 
 let booksCounter = 0;
 
+const library = []
+
 addBook.addEventListener("click", () => {
     dialog.showModal();
 })
@@ -17,8 +19,9 @@ confirmBtn.addEventListener("click",(event) => {
     arrayInputValue.push(document.querySelector("select").value)
 
     const newBook = new CreateBoook(arrayInputValue, booksCounter);
-    booksCounter += 1;
+    library.push(newBook)
     newBook.createCard()
+    booksCounter += 1;
     dialog.close()
 })
 
@@ -43,7 +46,7 @@ CreateBoook.prototype = {
         btn_delete = document.createElement("button")
 
         card.classList.add("card")
-        card.classList.add(`${this.bookId}`)
+        btn_delete.setAttribute("data-book-id",`${this.bookId}`)
 
         card.appendChild(title)
         card.appendChild(writtenBy)
@@ -65,9 +68,16 @@ CreateBoook.prototype = {
         author.textContent += `${this.author}`
         stats.textContent += `${this.status}`
 
-    /* delete card */
+    /* delete card node and object out of library*/
         btn_delete.addEventListener("click", function() {
-        this.parentNode.remove()})
+            for (let i=0; i < library.length; i++){
+                if(library.at(i).bookId === this.dataset.bookId) {
+                    library.splice(i,1);
+                }
+            }
+        this.parentNode.remove()
+
+    })
 
     }
 }
