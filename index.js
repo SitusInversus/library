@@ -23,16 +23,14 @@ confirmBtn.addEventListener("click",(event) => {
 })
 
 function CreateBoook(arrayProperties, bookId) {
-    this.bookId = bookId;
+    this.bookId = "book"+bookId;
     this.title = arrayProperties.at(0);
     this.author = arrayProperties.at(1);
     this.status = arrayProperties.at(2);
 }
 
 CreateBoook.prototype = {
-  /*   logThis : function(){
-        console.log("logthis works")
-    } */
+
     /* creating the card node  and its children*/
 
     createCard : function() {
@@ -45,6 +43,7 @@ CreateBoook.prototype = {
         btn_delete = document.createElement("button")
 
         card.classList.add("card")
+        card.classList.add(`${this.bookId}`)
 
         card.appendChild(title)
         card.appendChild(writtenBy)
@@ -59,11 +58,16 @@ CreateBoook.prototype = {
 
     /* adding textContent to the elements */
 
-        writtenBy.textContent += "written by";
+        writtenBy.textContent += "written by"
+        btn_delete.textContent += "delete"
 
         title.textContent += `${this.title}`
         author.textContent += `${this.author}`
         stats.textContent += `${this.status}`
+
+    /* delete card */
+        btn_delete.addEventListener("click", function() {
+        this.parentNode.remove()})
 
     }
 }
