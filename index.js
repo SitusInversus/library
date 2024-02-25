@@ -82,40 +82,41 @@ CreateBoook.prototype = {
             }
         this.parentNode.remove()
         })
-    /* toggle read status on btn_toggle_status, change textContent on stats and in instance*/
-    btn_toggle_status.addEventListener("click", function (event) {
-        console.log(event)
-        switch (this.className) {
-            case "read":
-                console.log("read executed")
-                btn_toggle_status.classList.remove('read')
-                btn_toggle_status.classList.add('notread')
-                btn_toggle_status.textContent = "change to not read"
-                stats.textContent = "notread"
+    /* toggle read/notread status on btn_toggle_status, change textContent on stats and in instance*/
+        btn_toggle_status.addEventListener("click", function (event) {
+            console.log(event)
+            switch (this.className) {
+                case "read":
+                    console.log("read executed")
+                    this.classList.remove('read')
+                    this.classList.add('notread')
+                    this.textContent = "change to not read"
+                    this.previousElementSibling.previousElementSibling.textContent = "notread"
 
-                for (let i=0; i < library.length; i++){
-                    if(library.at(i).bookId === this.dataset.bookId) {
-                        library.at(i).status = "notread";
-                        console.log(library.at(i).status);
+                    for (let i=0; i < library.length; i++){
+                        if(library.at(i).bookId === this.dataset.bookId) {
+                            library.at(i).status = "notread";
+                            console.log(library.at(i).status);
+                        }
                     }
-                }
-                break
-            case "notread":
-                console.log("notread executed")
-                btn_toggle_status.classList.remove('notread')
-                btn_toggle_status.classList.add('read')
-                btn_toggle_status.textContent = "change to read"
-                stats.textContent = "read"
+                    break
+                case "notread":
+                    console.log("notread executed")
+                    this.classList.remove('notread')
+                    this.classList.add('read')
+                    this.textContent = "change to read"
+                    this.previousElementSibling.previousElementSibling.textContent = "read"
+                    console.log(this.previousElementSibling.previousElementSibling)
 
-                for (let i=0; i < library.length; i++){
-                    if(library.at(i).bookId === this.dataset.bookId) {
-                        library.at(i).status = "read";
-                        console.log(library.at(i).status);
+                    for (let i=0; i < library.length; i++){
+                        if(library.at(i).bookId === this.dataset.bookId) {
+                            library.at(i).status = "read";
+                            console.log(library.at(i).status);
+                        }
                     }
-                }
-                break
-            default: 
-            console.log("default issued")
+                    break
+                default: 
+                console.log("default issued")
         }
     })
     }
